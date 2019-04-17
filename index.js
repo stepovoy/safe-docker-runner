@@ -1,3 +1,3 @@
 const runner = require('./src/runner');
 
-runner();
+runner.run();

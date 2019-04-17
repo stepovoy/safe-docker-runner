@@ -18,25 +18,29 @@ const DEPENDENCY = {
     mapper: ['mapper'],
 };
 
-console.log(params, 'params');
+function run() {
+    console.log(params, 'params');
 
-const {app, action} = params;
+    const {app, action} = params;
 
-const actionString = `${formatDownAction(app)}${action === 'down' ? '' : ' && ' + formatUpAction(app)}`;
+    const actionString = `${formatDownAction(app)}${action === 'down' ? '' : ' && ' + formatUpAction(app)}`;
 
-console.log(actionString, 'actionString');
-exec(actionString, (err, stdout, stderr) => {
-    if (err) {
-        // node couldn't execute the command
-        console.error(err);
-        process.exit(1);
-    }
+    console.log(actionString, 'actionString');
+    exec(actionString, (err, stdout, stderr) => {
+        if (err) {
+            // node couldn't execute the command
+            console.error(err);
+            process.exit(1);
+        }
 
-    // the *entire* stdout and stderr (buffered)
-    console.log(`stdout:\n${stdout}`);
-    console.log(`stderr:\n${stderr}`);
-    process.exit(0);
-});
+        // the *entire* stdout and stderr (buffered)
+        console.log(`stdout:\n${stdout}`);
+        console.log(`stderr:\n${stderr}`);
+        process.exit(0);
+    });
+}
+
+module.exports = { run };
 
 function formatUpAction(app) {
     let actionString = '';
