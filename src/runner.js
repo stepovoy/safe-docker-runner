@@ -1,22 +1,8 @@
 const exec = require('child_process').exec;
 const params = require('minimist')(process.argv.slice(2));
 
-const APPS_PATH = {
-    phpCrm: '$HOME/web-application-crm',
-    nodeCrm: '$HOME/crm-node',
-    persistence: '$HOME/trading_persistance',
-    admin: '$HOME/admin',
-    mapper: '$HOME/trading_account_mapper',
-};
-
-const DEPENDENCY = {
-    all: ['phpCrm', 'nodeCrm', 'persistence', 'admin', 'mapper'],
-    phpCrm: ['phpCrm', 'nodeCrm', 'persistence', 'mapper'],
-    nodeCrm: ['nodeCrm', 'persistence', 'mapper'],
-    persistence: ['persistence'],
-    admin: ['admin', 'mapper'],
-    mapper: ['mapper'],
-};
+const APPS_PATH = require('../consts/appsPath');
+const DEPENDENCY = require('../consts/dependency');
 
 function run() {
     console.log(params, 'params');
