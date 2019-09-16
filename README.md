@@ -1,4 +1,4 @@
-# ыafe-docker-runner
+# safe-docker-runner
   
 Run All Project in Docker via docker-compose down && docker-compose up -d w/o errors
 
